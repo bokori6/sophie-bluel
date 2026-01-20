@@ -11,16 +11,25 @@
       rel="stylesheet"
     />
     <meta name="description" content="" />
+    <!-- Font Awesome 6.x (dernière version gratuite) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
+    <div class="banniere hide">
+      <i class="fa-solid fa-pen-to-square"></i>
+      <p>Mode édition</p>
+    </div>
     <header>
-      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+      <h1>Sophie Bluel <span> Architecte d'intérieur</span></h1>
       <nav>
         <ul>
-          <li>projets</li>
-          <li>contact</li>
-          <li>login</li>
+          <a href="#"> <li>projets</li></a>
+          <a href="#"><li>contact</li></a>
+          <a href="login.html"><li>login</li></a>
           <li>
             <div class="img-icone">
               <img src="./assets/icons/instagram.png" alt="Instagram" />
@@ -54,7 +63,13 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
+        <div class="my-project">
+          <h2 id="mesprojetsh2">Mes Projets</h2>
+          <i class="fa-solid fa-pen-to-square"></i>
+          <a href="">modifier</a>
+        </div>
+
+        <div class="filter"></div>
         <div class="gallery"></div>
       </section>
       <section id="contact">
