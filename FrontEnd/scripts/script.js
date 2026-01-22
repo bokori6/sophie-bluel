@@ -60,7 +60,7 @@ async function afficherFiltre() {
     button.textContent = categorie.name;
     button.addEventListener("click", () => {
       const filteredWorks = allWorks.filter(
-        (work) => work.category.id === categorie.id
+        (work) => work.category.id === categorie.id,
       );
       console.log(filteredWorks);
       afficherTravaux(filteredWorks);
@@ -85,6 +85,12 @@ function afficherModeEdition() {
 
     const portfolioH2 = document.getElementById("mesprojetsh2");
     portfolioH2.style.marginBottom = "0";
+
+    const login = document.getElementById("login");
+    login.textContent = "logout";
+    login.addEventListener("click", () => {
+      localStorage.removeItem("token");
+    });
   }
 }
 
