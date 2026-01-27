@@ -284,3 +284,74 @@ footer nav ul {
   justify-content: center;
   padding: 5em;
 }
+
+.showmodal {
+  display: block;
+}
+
+.container-modal h3 {
+  text-align: center;
+  margin: 25px;
+  font-size: 25px;
+}
+
+.fa-xmark {
+  font-size: 20px;
+  text-align: end;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.gallery-modal {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  border-bottom: 1px solid #b3b3b3;
+  padding-bottom: 45px;
+}
+.gallery-modal img {
+  width: 77px;
+  height: 100px;
+}
+
+.gallery-modal div {
+  background-color: black;
+  width: fit-content;
+  border-radius: 5px;
+}
+
+.gallery-modal i {
+  color: white;
+  padding: 5px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: black;
+}
+
+.gallery-modal article {
+  position: relative;
+}
+
+dialog.modal {
+  border: none;
+  border-radius: 15px;
+  padding: 70px;
+
+  padding-top: 0;
+}
+
+button.bouton-ajout {
+  display: flex;
+  justify-self: center;
+  font-size: 15px;
+  width: 237px;
+  height: 36px;
+  padding: 10px 50px;
+  color: white;
+  margin-top: 90px;
+  background-color: #1d6154;
+  border-radius: 60px;
+  margin-top: 35px;
+  border: none;
+}

@@ -91,7 +91,37 @@ function afficherModeEdition() {
     login.addEventListener("click", () => {
       localStorage.removeItem("token");
     });
+
+    const modifier = document.getElementById("edit");
+    modifier.addEventListener("click", (e) => {
+      const modal = document.querySelector(".modal");
+      e.preventDefault();
+      showModal(modal);
+      galleryModal();
+    });
   }
 }
 
 afficherModeEdition();
+
+function galleryModal() {
+  const galerie = document.querySelector(".gallery-modal");
+
+  allWorks.forEach((work) => {
+    const article = document.createElement("article");
+    const image = document.createElement("img");
+    image.src = work.imageUrl;
+    image.alt = work.title;
+    const divTrash = document.createElement("div");
+    const trashCan = document.createElement("i");
+    trashCan.classList.add("fa-solid", "fa-trash-can");
+    divTrash.appendChild(trashCan);
+    article.appendChild(image);
+    article.appendChild(divTrash);
+    galerie.appendChild(article);
+  });
+}
+
+function showModal(element1) {
+  element1.showModal();
+}
