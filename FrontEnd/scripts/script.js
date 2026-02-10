@@ -1,5 +1,6 @@
 // Fonction qui affiche le travaux grace a une API
 let allWorks = [];
+let allCategories = [];
 
 // 1  Paramètre optionnel
 async function afficherTravaux(workToDisplay = null) {
@@ -34,15 +35,32 @@ async function afficherTravaux(workToDisplay = null) {
   });
 }
 
-afficherTravaux();
+async function init() {
+  await afficherTravaux();
+  await getCategories();
+  await afficherFiltre();
+  await afficherModeEdition();
+  initSelectModal();
+}
+
+init();
+
+async function getCategories() {
+  try {
+    const request = await fetch("http://localhost:5678/api/categories");
+    if (request.ok) {
+      allCategories = await request.json();
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return allCategories;
+}
 
 // crée des boutons de filtrage basés sur les catégories récupérées depuis l'API.
 
 // 1 Récupération des données
 async function afficherFiltre() {
-  const request = await fetch("http://localhost:5678/api/categories");
-  const categories = await request.json();
-
   // 2 Sélection de la zone de filtres
   const filter = document.querySelector(".filter");
 
@@ -55,7 +73,7 @@ async function afficherFiltre() {
   filter.appendChild(buttonTous);
 
   // 3  Création des boutons de catégories
-  categories.forEach((categorie) => {
+  allCategories.forEach((categorie) => {
     const button = document.createElement("button");
     button.textContent = categorie.name;
     button.addEventListener("click", () => {
@@ -72,9 +90,7 @@ async function afficherFiltre() {
   });
 }
 
-afficherFiltre();
-
-function afficherModeEdition() {
+async function afficherModeEdition() {
   const token = localStorage.getItem("token");
   if (token) {
     const banniere = document.querySelector(".banniere");
@@ -99,13 +115,27 @@ function afficherModeEdition() {
       showModal(modal);
       galleryModal();
     });
+
+    const cross = document.querySelector(".fa-xmark");
+    console.log(cross);
+    cross.addEventListener("click", () => {
+      const modal = document.querySelector(".modal");
+      closeModal(modal);
+    });
+
+    const buttonAfficherPhotos = document.querySelector(".bouton-ajout");
+    buttonAfficherPhotos.addEventListener("click", () => {
+      const modal = document.querySelector(".modal");
+      const modal2 = document.querySelector(".modal2");
+      closeModal(modal);
+      showModal(modal2);
+    });
   }
 }
 
-afficherModeEdition();
-
 function galleryModal() {
   const galerie = document.querySelector(".gallery-modal");
+  galerie.innerHTML = "";
 
   allWorks.forEach((work) => {
     const article = document.createElement("article");
@@ -115,6 +145,9 @@ function galleryModal() {
     const divTrash = document.createElement("div");
     const trashCan = document.createElement("i");
     trashCan.classList.add("fa-solid", "fa-trash-can");
+    trashCan.addEventListener("click", () => {
+      deletedWorks(work.id);
+    });
     divTrash.appendChild(trashCan);
     article.appendChild(image);
     article.appendChild(divTrash);
@@ -124,4 +157,38 @@ function galleryModal() {
 
 function showModal(element1) {
   element1.showModal();
+}
+
+function closeModal(element1) {
+  element1.close();
+}
+
+async function deletedWorks(id) {
+  const request = await fetch(`http://localhost:5678/api/works/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
+  if (!request.ok) {
+    throw Error("votre travail n'a pas été supprimé");
+  } else {
+    allWorks = allWorks.filter((work) => work.id !== id);
+    galleryModal(allWorks);
+    afficherTravaux(allWorks);
+  }
+}
+
+function initSelectModal() {
+  const select = document.getElementById("categories");
+  // select.innerHTML = "";
+
+  allCategories.forEach((categorie) => {
+    const option = document.createElement("option");
+    option.textContent = categorie.name;
+    option.value = categorie.id;
+    select.appendChild(option);
+  });
 }
