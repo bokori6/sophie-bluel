@@ -76,6 +76,36 @@
               <button class="bouton-ajout">Ajouter une photo</button>
             </div>
           </dialog>
+          <dialog class="modal2">
+            <div class="container-modal2">
+              <div class="modal-i">
+                <i class="fa-solid fa-arrow-left"></i>
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+
+              <form action="" method="post">
+                <h3 class="tittle-modal">Ajout photo</h3>
+                <div class="ajout-photo-modal">
+                  <div class="input-form">
+                    <i class="fa-regular fa-image"></i>
+
+                    <label class="button" for="file"> + Ajouter photo </label>
+                    <input type="file" id="file" />
+
+                    <p class="p">jpg, png : 4mo max</p>
+                  </div>
+                </div>
+              </form>
+              <div class="valider-bouton">
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" />
+                <label for="categorie">Catégorie</label>
+                <select id="categories"></select>
+                <div class="line"></div>
+                <button class="valider-bouton2" type="submit">valider</button>
+              </div>
+            </div>
+          </dialog>
         </div>
 
         <div class="filter"></div>
