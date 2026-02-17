@@ -18,6 +18,7 @@
     />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
+  <script src="scripts/script.js" defer></script>
   <body>
     <div class="banniere hide">
       <i class="fa-solid fa-pen-to-square"></i>
@@ -83,14 +84,19 @@
                 <i class="fa-solid fa-xmark"></i>
               </div>
 
-              <form action="" method="post">
+              <form action="" method="post" id="form-sendWork">
                 <h3 class="tittle-modal">Ajout photo</h3>
                 <div class="ajout-photo-modal">
                   <div class="input-form">
                     <i class="fa-regular fa-image"></i>
 
                     <label class="button" for="file"> + Ajouter photo </label>
-                    <input type="file" id="file" />
+                    <input
+                      type="file"
+                      id="file"
+                      name="image"
+                      accept="image/png, image/jpeg"
+                    />
                     <p class="p">jpg, png : 4mo max</p>
 
                     <div class="prewiew">
@@ -98,15 +104,19 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="valider-bouton">
+                  <label for="titre">Titre</label>
+                  <input type="text" id="titre" name="title" />
+                  <label for="categories">Catégorie</label>
+                  <select id="categories" name="category"></select>
+                  <div class="line"></div>
+                  <button type="submit" class="valider-bouton2">valider</button>
+                  <p class="msg-erreur">
+                    Message erreur: veuillez remplir tout les champs
+                  </p>
+                </div>
               </form>
-              <div class="valider-bouton">
-                <label for="titre">Titre</label>
-                <input type="text" id="titre" />
-                <label for="categorie">Catégorie</label>
-                <select id="categories"></select>
-                <div class="line"></div>
-                <button class="valider-bouton2" type="submit">valider</button>
-              </div>
             </div>
           </dialog>
         </div>
@@ -137,5 +147,4 @@
       </nav>
     </footer>
   </body>
-  <script src="scripts/script.js" defer></script>
 </html>

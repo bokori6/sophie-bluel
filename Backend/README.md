@@ -23,7 +23,7 @@ npm start
 ## Compte de test pour Sophie Bluel
 
 |email|password|
-| :-----------sophie.bluel@test.tld----: | :---------------: |
+| -----------sophie.bluel@test.tld----: | :---------------: |
 ||S0phie|
 
 ## Accéder à Swagger
