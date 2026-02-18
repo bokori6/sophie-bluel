@@ -249,11 +249,14 @@ function formValider(titre, categorie, image, bouton) {
   ) {
     bouton.disabled = true;
     bouton.classList.remove("active");
+    // console.log("forme non valide");
     return false;
   }
 
   bouton.disabled = false;
+
   bouton.style.backgroundColor = "green";
+  return true;
 }
 // Références DOM mises en cache une seule fois
 function initValidationListener() {
@@ -271,7 +274,7 @@ function initValidationListener() {
   image.addEventListener("change", () =>
     formValider(titre, categorie, image, bouton),
   );
-
+  // console.log("init");
   document.querySelector(".msg-erreur").classList.add("elementhidden");
 }
 
@@ -283,8 +286,8 @@ async function addWork() {
   const categorie = document.getElementById("categories");
   const image = document.getElementById("file");
   const bouton = document.querySelector(".valider-bouton2");
-
   if (!formValider(titre, categorie, image, bouton)) {
+    console.log("addWorks");
     document.querySelector(".msg-erreur").classList.remove("elementhidden");
     return;
   }
@@ -325,9 +328,8 @@ document
     await addWork();
   });
 
-// ==========================
 // INIT SELECT
-// ==========================
+
 function initSelectModal() {
   const select = document.getElementById("categories");
 
