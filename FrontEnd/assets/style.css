@@ -292,13 +292,14 @@ footer nav ul {
 .container-modal h3 {
   text-align: center;
   margin: 49px;
-  font-size: 25px;
+  font-size: 26px;
 }
 
 .fa-xmark {
   font-size: 20px;
   text-align: end;
   width: 100%;
+  padding-left: 50px;
 }
 
 .gallery-modal {
@@ -311,6 +312,8 @@ footer nav ul {
 .gallery-modal img {
   width: 77px;
   height: 100px;
+  padding-bottom: 22px;
+  object-fit: cover;
 }
 
 .gallery-modal div {
@@ -326,7 +329,7 @@ footer nav ul {
   top: 5px;
   right: 5px;
   background-color: black;
-  font-size: 13px;
+  font-size: 10px;
 }
 
 .gallery-modal article {
@@ -336,7 +339,12 @@ footer nav ul {
 dialog.modal {
   border: none;
   border-radius: 15px;
-  padding: 55px;
+  padding: 90px;
+
+  padding-top: 25px;
+  padding-bottom: 45px;
+  width: 410px;
+  /* height: 521px; */
 }
 
 button.bouton-ajout {
@@ -361,7 +369,7 @@ button.bouton-ajout {
 
 .container-modal2 {
   width: 630px;
-  height: 670px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   padding: 15px;

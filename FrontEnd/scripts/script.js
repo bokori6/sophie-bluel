@@ -6,7 +6,8 @@ let allCategories = [];
 // INITIALISATION
 
 async function init() {
-  await afficherTravaux();
+  await getWorks();
+  afficherTravaux();
   await getCategories();
   afficherFiltre();
   afficherModeEdition();
@@ -15,16 +16,25 @@ async function init() {
 
 init();
 
+async function getWorks() {
+  try {
+    const request = await fetch("http://localhost:5678/api/works");
+    if (!request.ok) {
+      throw new Error("Erreur récupération des travaux");
+    }
+
+    const data = await request.json();
+    allWorks = data;
+  } catch (e) {
+    e;
+  }
+}
+
 // AFFICHER TRAVAUX
 
-async function afficherTravaux(workToDisplay = null) {
+function afficherTravaux(workToDisplay = null) {
   try {
-    if (!workToDisplay) {
-      const request = await fetch("http://localhost:5678/api/works");
-      if (!request.ok) throw new Error("Erreur récupération des travaux");
-      allWorks = await request.json();
-      workToDisplay = allWorks;
-    }
+    workToDisplay = allWorks;
 
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = "";
@@ -278,6 +288,26 @@ function initValidationListener() {
   document.querySelector(".msg-erreur").classList.add("elementhidden");
 }
 
+// async function addWork(formData) {
+//   const token = localStorage.getItem("token");
+
+//   const response = await fetch("http://localhost:5678/api/works", {
+//     method: "POST",
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//     body: formData,
+//   });
+
+//   if (!response.ok) {
+//     const error = await response.json();
+//     console.log("Détail erreur serveur :", error);
+//     throw new Error("Erreur serveur");
+//   }
+
+//   return await response.json();
+// }
+
 // AJOUT WORK
 
 async function addWork() {
@@ -289,7 +319,7 @@ async function addWork() {
   if (!formValider(titre, categorie, image, bouton)) {
     console.log("addWorks");
     document.querySelector(".msg-erreur").classList.remove("elementhidden");
-    return;
+    return true;
   }
 
   try {
@@ -299,6 +329,7 @@ async function addWork() {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
+
       body: formData,
     });
 
