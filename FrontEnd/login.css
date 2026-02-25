@@ -1,0 +1,72 @@
+h2 {
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 30px;
+  color: #1d6154;
+}
+html {
+  background-color: #fffef8;
+}
+label {
+  font-size: 14px;
+  padding-left: 9px;
+}
+
+input#email {
+  display: flex;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+  gap: 15px;
+  margin: 9px;
+  width: 379px;
+  /* height: 51px; */
+  font-size: 32px;
+  padding: 6px;
+}
+
+label.password {
+  display: grid;
+  justify-content: center;
+  padding-right: 308px;
+}
+
+.champ-email {
+  display: grid;
+  justify-content: center;
+  margin: 26px;
+}
+input#mot-de-passe {
+  display: flex;
+  justify-self: anchor-center;
+  font-size: 42px;
+  width: 384px;
+  border: none;
+  margin-top: 10px;
+  margin-right: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+
+button.connecter {
+  display: flex;
+  justify-self: anchor-center;
+  background-color: #1d6154;
+  color: white;
+  width: 179px;
+  height: 36px;
+  border: none;
+  border-radius: 21px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 58px;
+}
+
+a {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  color: #3d3d3d;
+  font-size: 14px;
+}

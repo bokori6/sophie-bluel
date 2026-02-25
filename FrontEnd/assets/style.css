@@ -299,7 +299,11 @@ footer nav ul {
   font-size: 20px;
   text-align: end;
   width: 100%;
-  padding-left: 50px;
+  padding-left: 75px;
+}
+
+i.fa-solid.fa-arrow-left {
+  font-size: 25px;
 }
 
 .gallery-modal {
@@ -312,7 +316,7 @@ footer nav ul {
 .gallery-modal img {
   width: 77px;
   height: 100px;
-  padding-bottom: 22px;
+  padding-bottom: 15px;
   object-fit: cover;
 }
 
@@ -330,6 +334,7 @@ footer nav ul {
   right: 5px;
   background-color: black;
   font-size: 10px;
+  border-radius: 3px;
 }
 
 .gallery-modal article {
@@ -339,7 +344,7 @@ footer nav ul {
 dialog.modal {
   border: none;
   border-radius: 15px;
-  padding: 90px;
+  padding: 105px;
 
   padding-top: 25px;
   padding-bottom: 45px;
@@ -422,7 +427,7 @@ i.fa-regular.fa-image {
   display: grid;
   justify-items: center;
   font-size: 55px;
-  margin: 10px;
+  margin: 14px;
   color: #b9c5cc;
 }
 label.button {

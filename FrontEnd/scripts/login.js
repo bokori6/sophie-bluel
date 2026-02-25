@@ -30,3 +30,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   connexion();
 });
+
+// Traitement de message d'erreur du forlulaire login
+
+function messageError () 

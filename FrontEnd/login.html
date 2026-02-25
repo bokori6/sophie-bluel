@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -12,7 +12,9 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="login.css" />
   </head>
+
   <body>
     <header>
       <h1>Sophie Bluel <span> Architecte d'intérieur</span></h1>
@@ -29,19 +31,28 @@
         </ul>
       </nav>
     </header>
+
     <h2>Log In</h2>
-    <form action="" method="post" class="form">
-      <div class="champ-email">
-        <label for="email">E-mail</label>
-        <input type="text" name="email" id="email" required />
-      </div>
-      <div class="champ-mot-de-passe">
-        <label for="mot-de-passe">Mot de passe</label>
-        <input type="password" name="mot-de-passe" id="mot-de-passe" required />
-      </div>
-      <button type="submit" class="connecter">Se connecter</button>
-    </form>
+    <div class="form-login">
+      <form action="" method="post" class="form">
+        <div class="champ-email">
+          <label for="email">E-mail</label>
+          <input type="text" name="email" id="email" required />
+        </div>
+        <div class="champ-mot-de-passe">
+          <label class="password" for="mot-de-passe">Mot de passe</label>
+          <input
+            type="password"
+            name="mot-de-passe"
+            id="mot-de-passe"
+            required
+          />
+        </div>
+        <button type="submit" class="connecter">Se connecter</button>
+      </form>
+    </div>
     <a href="#">Mot de passe oublié</a>
   </body>
+
   <script src="scripts/login.js" defer></script>
 </html>
