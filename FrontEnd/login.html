@@ -37,21 +37,20 @@
       <form action="" method="post" class="form">
         <div class="champ-email">
           <label for="email">E-mail</label>
-          <input type="text" name="email" id="email" required />
+          <input type="text" name="email" id="email" />
         </div>
         <div class="champ-mot-de-passe">
           <label class="password" for="mot-de-passe">Mot de passe</label>
-          <input
-            type="password"
-            name="mot-de-passe"
-            id="mot-de-passe"
-            required
-          />
+          <input type="password" name="mot-de-passe" id="mot-de-passe" />
         </div>
+        <div id="error-message">Email ou mot de passe incorrect</div>
         <button type="submit" class="connecter">Se connecter</button>
       </form>
     </div>
     <a href="#">Mot de passe oublié</a>
+    <footer>
+      <p>Mentions légales</p>
+    </footer>
   </body>
 
   <script src="scripts/login.js" defer></script>

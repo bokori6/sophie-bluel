@@ -129,6 +129,14 @@ function afficherModeEdition() {
   const modal1 = document.querySelector(".modal");
   const modal2 = document.querySelector(".modal2");
 
+  // fermeture de la flèche
+
+  const left = document.querySelector(".fa-arrow-left");
+  left.addEventListener("click", () => {
+    modal2.close();
+    modal1.showModal();
+  });
+
   document.getElementById("edit").addEventListener(
     "click",
     (e) => {
@@ -289,7 +297,7 @@ function initValidationListener() {
 }
 
 // async function addWork(formData) {
-//   const token = localStorage.getItem("token");
+// const token = localStorage.getItem("token");
 
 //   const response = await fetch("http://localhost:5678/api/works", {
 //     method: "POST",

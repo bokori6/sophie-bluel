@@ -2,6 +2,7 @@ async function connexion() {
   // Récupérer les champs du formulaire
   const email = document.getElementById("email");
   const password = document.getElementById("mot-de-passe");
+  const errorMsg = document.getElementById("error-message");
   // Envoyer une requête au serveur
   const request = await fetch("http://localhost:5678/api/users/login", {
     // Méthode POST
@@ -16,7 +17,7 @@ async function connexion() {
   });
   // Vérification de la réponse serveur
   if (!request.ok) {
-    throw Error(`erreur: ${request.status}`);
+    errorMsg.style.display = "block";
   } else {
     // Si la requête réussit
     const response = await request.json();
@@ -30,7 +31,3 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   connexion();
 });
-
-// Traitement de message d'erreur du forlulaire login
-
-function messageError () 
