@@ -156,6 +156,25 @@ function afficherModeEdition() {
     });
   });
 
+  // const dialogs = [modal1, modal2];
+  // dialogs.forEach((d) => {
+  //   d.addEventListener("click", (e) => {
+  //     if (e.target === d) {
+  //       d.close();
+  //     }
+  //   });
+  // });
+
+  // Fermeture des dialog
+
+  const dialogs = document.querySelectorAll("dialog");
+  dialogs.forEach((dialog) => {
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+  });
   // Passe à la modal 2
   document.querySelector(".bouton-ajout").addEventListener(
     "click",
