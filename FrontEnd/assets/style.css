@@ -177,6 +177,14 @@ nav li {
 li:hover {
   color: #b1663c;
 }
+
+#login {
+  display: block;
+}
+
+#logout {
+  display: none;
+}
 #introduction {
   display: flex;
   align-items: center;
@@ -199,6 +207,20 @@ li:hover {
 
 #introduction p {
   margin-bottom: 0.5em;
+}
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.filter button {
+  height: 40px;
+  width: 138px;
+  border: 1px solid #1d6154;
+  color: #1d6154;
+  margin-bottom: 45px;
+  border-radius: 60px;
 }
 #portfolio h2 {
   text-align: center;
@@ -504,4 +526,14 @@ img#img-preview {
 
 .elementhidden {
   display: none;
+}
+
+#edit {
+  display: none;
+}
+.fa-solid,
+.fas {
+  font-weight: 900;
+  padding: 8px;
+  color: #000000;
 }
