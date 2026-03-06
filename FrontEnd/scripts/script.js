@@ -12,6 +12,7 @@ async function init() {
   afficherFiltre();
   afficherModeEdition();
   initSelectModal();
+  console.log(allWorks);
 }
 
 init();
@@ -32,10 +33,8 @@ async function getWorks() {
 
 // AFFICHER TRAVAUX
 
-function afficherTravaux(workToDisplay = null) {
+function afficherTravaux(workToDisplay = allWorks) {
   try {
-    workToDisplay = allWorks;
-
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = "";
 
@@ -79,7 +78,13 @@ function afficherFiltre() {
 
   const buttonTous = document.createElement("button");
   buttonTous.textContent = "Tous";
-  buttonTous.addEventListener("click", () => afficherTravaux());
+  buttonTous.addEventListener("click", () => {
+    document.querySelectorAll("button").forEach((button) => {
+      button.classList.remove("active");
+    });
+    buttonTous.classList.add("active");
+    afficherTravaux();
+  });
   filter.appendChild(buttonTous);
 
   allCategories.forEach((categorie) => {
@@ -87,10 +92,16 @@ function afficherFiltre() {
     button.textContent = categorie.name;
 
     button.addEventListener("click", () => {
+      document.querySelectorAll("button").forEach((button) => {
+        button.classList.remove("active");
+      });
+      button.classList.add("active");
       const filteredWorks = allWorks.filter(
-        (work) => work.category.id === categorie.id,
+        (work) => work.categoryId === categorie.id,
       );
+      console.log(filteredWorks);
       afficherTravaux(filteredWorks);
+      // button.style.backgroundColor = "green";
     });
 
     filter.appendChild(button);
@@ -100,14 +111,14 @@ function afficherFiltre() {
 // MODE EDITION
 
 function afficherModeEdition() {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   if (!token) return;
 
   // Affiche la bannière
   document.querySelector(".banniere").classList.remove("hide");
 
   // Cache les filtres
-  document.querySelector(".filter").setAttribute("hidden", "");
+  document.querySelector(".filter").style.display = "none";
 
   // Ajuste le style du titre
   const portfolioH2 = document.getElementById("mesprojetsh2");
@@ -115,12 +126,16 @@ function afficherModeEdition() {
 
   // Logout
   const loginBtn = document.getElementById("login");
-  loginBtn.textContent = "logout";
-  loginBtn.addEventListener(
+  const logoutBtn = document.getElementById("logout");
+  loginBtn.style.display = "none";
+  logoutBtn.style.display = "block";
+  logoutBtn.addEventListener(
     "click",
     () => {
-      localStorage.removeItem("token");
-      location.reload();
+      sessionStorage.removeItem("token");
+      document.querySelector(".filter").style.display = "flex";
+      loginBtn.style.display = "block";
+      logoutBtn.style.display = "none";
     },
     { once: true },
   );
@@ -137,7 +152,9 @@ function afficherModeEdition() {
     modal1.showModal();
   });
 
-  document.getElementById("edit").addEventListener(
+  const btnModifier = document.getElementById("edit");
+  btnModifier.style.display = "block";
+  btnModifier.addEventListener(
     "click",
     (e) => {
       e.preventDefault();
@@ -175,6 +192,7 @@ function afficherModeEdition() {
       }
     });
   });
+
   // Passe à la modal 2
   document.querySelector(".bouton-ajout").addEventListener(
     "click",
@@ -219,7 +237,7 @@ async function deleteWork(id) {
     const request = await fetch(`http://localhost:5678/api/works/${id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     });
 
@@ -316,7 +334,7 @@ function initValidationListener() {
 }
 
 // async function addWork(formData) {
-// const token = localStorage.getItem("token");
+// const token = sessionStorage.getItem("token");
 
 //   const response = await fetch("http://localhost:5678/api/works", {
 //     method: "POST",
@@ -354,7 +372,7 @@ async function addWork() {
     const request = await fetch("http://localhost:5678/api/works", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
 
       body: formData,

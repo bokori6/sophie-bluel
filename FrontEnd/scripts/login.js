@@ -21,7 +21,7 @@ async function connexion() {
   } else {
     // Si la requête réussit
     const response = await request.json();
-    localStorage.setItem("token", response.token);
+    sessionStorage.setItem("token", response.token);
     window.location.href = "index.html";
   }
 }
