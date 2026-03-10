@@ -80,9 +80,9 @@ function afficherFiltre() {
   buttonTous.textContent = "Tous";
   buttonTous.addEventListener("click", () => {
     document.querySelectorAll("button").forEach((button) => {
-      button.classList.remove("active");
+      button.classList.remove("button-active");
     });
-    buttonTous.classList.add("active");
+    buttonTous.classList.add("button-active");
     afficherTravaux();
   });
   filter.appendChild(buttonTous);
@@ -93,9 +93,9 @@ function afficherFiltre() {
 
     button.addEventListener("click", () => {
       document.querySelectorAll("button").forEach((button) => {
-        button.classList.remove("active");
+        button.classList.remove("button-active");
       });
-      button.classList.add("active");
+      button.classList.add("button-active");
       const filteredWorks = allWorks.filter(
         (work) => work.categoryId === categorie.id,
       );
@@ -362,9 +362,7 @@ async function addWork() {
   const image = document.getElementById("file");
   const bouton = document.querySelector(".valider-bouton2");
   if (!formValider(titre, categorie, image, bouton)) {
-    console.log("addWorks");
     document.querySelector(".msg-erreur").classList.remove("elementhidden");
-    return true;
   }
 
   try {

@@ -133,6 +133,7 @@ body {
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
+  background-color: #fffef8;
 }
 header {
   display: flex;
@@ -216,16 +217,17 @@ li:hover {
 }
 .filter button {
   height: 40px;
-  width: 150px;
+  /* width: 150px; */
+  padding: 5px 30px;
   border: 1px solid #1d6154;
   font-weight: bold;
-  color: #1d6154;
   margin-bottom: 45px;
   border-radius: 60px;
 }
 
-.button .active {
+.button-active {
   background-color: #1d6154;
+  color: white;
 }
 
 #portfolio h2 {
@@ -402,7 +404,7 @@ button.bouton-ajout {
 
 .container-modal2 {
   width: 630px;
-  height: 600px;
+  height: 630px;
   display: flex;
   flex-direction: column;
   padding: 15px;
@@ -542,4 +544,9 @@ img#img-preview {
   font-weight: 900;
   padding: 8px;
   color: #000000;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
